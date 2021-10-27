@@ -6,4 +6,9 @@ io.on('connection', client => {
   client.on('disconnect', () => {
     console.log('Cliente desconectado');
   });
+
+  // Eventos personalizados
+  client.on('enviarMensaje', (payload) => {
+    client.broadcast.emit('nuevoMensaje', payload);
+  });
 });
